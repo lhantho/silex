@@ -14,7 +14,7 @@ $app = new Silex\Application();
 
 
 
-$app->get('/doc', function () {
+$app->get('/', function () {
 
     return <<<EOT
 
@@ -32,23 +32,24 @@ $app->get('/doc', function () {
 
     <body>
 
-        <pre>
+        <pre>Get /
+        renvoie la doc de l'api
 
-        GET /users/
+        GET /api/users/
 
-        GET /users/{id}
+        GET /api/users/{id}
 
         renvoit le détail d'un utilisateur
 
-        POST /users/
+        POST /api/users/
 
         ajoute un utilisateur
 
-        PUT /users/{id}
+        PUT /api/users/{id}
 
         ajoute ou modifie un utlisateur
 
-        DELETE /users/{id}
+        DELETE /api/users/{id}
 
         supprime un utilisateur
 
@@ -62,7 +63,7 @@ EOT;
 
 });
 
-$app->get('/users', function() use ($users) {
+$app->get('/api/users/', function() use ($users) {
 
     return json_encode($users);
 

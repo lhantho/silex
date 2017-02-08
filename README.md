@@ -11,17 +11,17 @@ composer install
 
 ## utilisation
 
-Get /users/
+Get /api/users/
 renvoit la liste d'un utilisateurs
 
-GET /users/{id}
+GET /api/users/{id}
 renvoit le détail d'un utilisateur
 
-POST /users/
+POST /api/users/
 ajoute un utilisateurs
 
-PUT /users/{id}
+PUT /api/users/{id}
 ajoute ou modifie un utilisateur
 
-DELETE /users/{id}
+DELETE /api/users/{id}
 supprime un utilisateur
