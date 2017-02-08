@@ -1,17 +1,17 @@
 <?php
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 require_once __DIR__.'/../vendor/autoload.php';
 
 $users = [
-  'lorem',
-  'ipsum',
-  'foo',
-  'bar',
-  'baz',
+  ['id' => 0, 'name' => 'lorem'],
+  ['id' => 1, 'name' => 'ipsum'],
+  ['id' => 2, 'name' => 'foo'],
 ];
 
 $app = new Silex\Application();
 
+$app['debug'] = true;
 
 
 $app->get('/', function () {
@@ -69,4 +69,24 @@ $app->get('/api/users/', function() use ($users) {
 
 });
 
+$app->get('/api/users/{id}', function($id) use ($users){
+  return json_encode($users[$id]);
+});
+$app->post('/api/users/', function(Request $request) use ($users){
+  $name = $request->get('name');
+
+  $nextIndex = count($users);
+  $users[] = [
+    'id' => $nextIndex,
+    'name' => $name,
+  ];
+
+  $lastId = count($users) - 1;
+  return $lastId;
+});
+$app->delete('/api/users/{id}', function($id) use ($users) {
+  unset($users[$id]);
+
+  return new Response('', 204);
+});
 $app->run();
