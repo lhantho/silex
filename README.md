@@ -12,7 +12,7 @@ composer install
 ## utilisation
 
 Get /users/
-renvoit le détail d'un utilisateurs
+renvoit la liste d'un utilisateurs
 
 GET /users/{id}
 renvoit le détail d'un utilisateur
@@ -24,4 +24,4 @@ PUT /users/{id}
 ajoute ou modifie un utilisateur
 
 DELETE /users/{id}
-supprime un utilisateur 
+supprime un utilisateur
